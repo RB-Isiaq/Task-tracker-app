@@ -19,33 +19,28 @@ const CreateTask = () => {
   const createTask = async (e) => {
     e.preventDefault();
     setSubmitting(true);
-
+    
+const form = new FormData(e.target);
+    const formData = Object.fromEntries(form.entries());
+    formData.userId = session?.uṣer.name;
+    
     try {
-      const response = await fetch("/api/prompt/new", {
+      const res = await fetch("/api/task/new", {
         method: "POST",
         headers: {
-          "Content-type": "application/json"},
-        body: JSON.stringify({
-          title: task.title,
-          desc: task.desc,
-          dueDate: task.dueDate,
-          status: task.status,
-          user: session?.user.name
-        }),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
-
-      if (response.ok) {
-        router.push("/dashboard");
-      }
+      res.status === 201 && router.push("/dashboard");
     } catch (error) {
+      setError(error);
       console.log(error);
-      alert(error)
     } finally {
       setSubmitting(false);
     }
   };
   return (
-  
     
     <Form
       type="Create"
