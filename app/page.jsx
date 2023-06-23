@@ -10,6 +10,7 @@ const Home = () => {
   const params = useSearchParams();
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [dashboard, setDashboard] = useState(false);
 
   useEffect(() => {
     setError(params.get("error"));
@@ -27,6 +28,10 @@ const Home = () => {
     });
     if (status === "authenticated") {
      router.push("/dashboard");
+      setDashboard(true)
+    }
+    if (status === "unauthenticated") {
+      setDashboard(false)
     }
     console.log(session);
   };
@@ -46,9 +51,13 @@ const Home = () => {
       <h1 className="text-2xl font-bold orange_gradient mt-4">
         {success ? success : `Welcome Back ${session?.user.name}`}
       </h1>
-      <h1 className="text-lg orange_gradient">
-        Please sign in to see your dashboard.
-      </h1>
+      {dashboard === true ?
+      <h1 className="text-lg">
+        Go to your <Link href="/dashboard" className="orange_gradient>dashboard.</Link>
+      </h1> :
+        <h1 className="text-lg>
+       Please sign in to continue.
+      </h1> }
       <form
         onSubmit={handleSubmit}
         className="relative w-full sm:w-[550px] flex gap-4 items-center flex-col mt-4 mb-4"
