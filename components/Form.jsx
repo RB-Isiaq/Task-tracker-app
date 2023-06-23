@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
-  const dueDate = task?.dueDate.split("/").reverse().join("-");
+  const [dueDate, setDueDate] = useState(task?.dueDate.split("/").reverse().join("-"));
   const [status, setStatus] = useState(task?.status);
   return (
     <section className="w-full max-w-full flex-start flex-col">
@@ -47,7 +47,7 @@ const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
           <input
             value={dueDate}
             type="date"
-            onChange={(e) => setTask({ ...task, dueDate: e.target.value })}
+            onChange={(e) => setDueDate(e.target.value)}
             required
             className="form_input"
           />
