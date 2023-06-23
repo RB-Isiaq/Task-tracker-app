@@ -29,8 +29,8 @@ const Home = () => {
     if (status === "authenticated") {
      setDashboard(true)
       // router.push("/dashboard");
-      
-    } else {
+    } 
+    if (status === "unauthenticated") {
       setDashboard(false)
     }
     console.log(session);
