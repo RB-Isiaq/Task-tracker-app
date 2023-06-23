@@ -30,8 +30,7 @@ const Home = () => {
      setDashboard(true)
       // router.push("/dashboard");
       
-    }
-    if (status === "unauthenticated") {
+    } else {
       setDashboard(false)
     }
     console.log(session);
@@ -52,13 +51,12 @@ const Home = () => {
       <h1 className="text-2xl font-bold orange_gradient mt-4">
         {success ? success : "Welcome Back"}
       </h1>
-      {dashboard === true ?
-    (<h1 className="text-lg">
+      {dashboard && <h1 className="text-lg">
         Go to your <Link href="/dashboard" className="orange_gradient>dashboard.</Link>
-      </h1> ) :
-         (<h1 className="text-lg>
+      </h1>}
+      {!dashboard && <h1 className="text-lg>
        Please sign in to continue.
-      </h1> )}
+      </h1> }
       <form
         onSubmit={handleSubmit}
         className="relative w-full sm:w-[550px] flex gap-4 items-center flex-col mt-4 mb-4"
