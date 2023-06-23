@@ -70,12 +70,15 @@ const Home = ({ session }) => {
           className="search_input peer"
         />
         <div className="flex justify-between gap-10">
+         <Link href="/dashboard" >
+         
           <button
             type="submit"
             className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white w-max"
             >
             Sign In
           </button>
+           </Link>
           <button
             type="button"
             className="px-5 py-1.5 text-sm bg_green_gradient rounded-full text-white w-max"
