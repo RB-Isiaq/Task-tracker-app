@@ -52,7 +52,7 @@ const Home = () => {
         {success ? success : "Welcome Back"}
       </h1>
       {dashboard && <h1 className="text-lg">
-        Go to your <Link href="/dashboard" className="orange_gradient>dashboard.</Link>
+        Go to your <Link href="/dashboard" className="orange_gradient">dashboard.</Link>
       </h1>}
       {!dashboard && <h1 className="text-lg>
        Please sign in to continue.
