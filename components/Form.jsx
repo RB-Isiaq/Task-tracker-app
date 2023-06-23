@@ -34,7 +34,7 @@ const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
           </span>
           <textarea
             value={task?.desc}
-            onChange={(e) => setTask({ ...task, task: e.target.value })}
+            onChange={(e) => setTask({ ...task, desc: e.target.value })}
             placeholder="write your task description here"
             required
             className="form_textarea"
@@ -77,7 +77,7 @@ const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
             disabled={submitting}
             className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white"
           >
-            {submitting ? `${type}...` : type}
+            {submitting ? `${type}ing...` : type}
           </button>
         </div>
       </form>
