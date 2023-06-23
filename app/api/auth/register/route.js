@@ -10,6 +10,14 @@ export const POST = async (request) => {
 
   const hashedPassword = await bcrypt.hash(password, 5);
 
+  const user = User.findOne({
+    username: username
+  })
+
+  if(user) {
+    throw new NextResponse('Username already exist. Try another username')
+  }
+
   const newUser = new User({
     name: fullName,
     username,
@@ -23,7 +31,7 @@ export const POST = async (request) => {
       status: 201,
     });
   } catch (error) {
-    return new NextResponse(error.message, {
+    return new NextResponse(error?.message, {
       status: 500,
     });
   }

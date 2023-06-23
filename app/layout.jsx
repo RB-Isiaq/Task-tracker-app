@@ -7,17 +7,15 @@ export const metadata = {
   description: "Plan your schedules and deadlines today",
 };
 
-const RootLayout = ({ children }) => {
+const RootLayout = ({ children, session }) => {
   return (
     <html lang="en">
       <body>
-        <Provider>
+        <Provider session={session}>
           <div className="main">
             <div className="gradient" />
           </div>
-          <main className="app">
-            {children}
-          </main>
+          <main className="app">{children}</main>
         </Provider>
       </body>
     </html>

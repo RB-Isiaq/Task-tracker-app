@@ -1,5 +1,5 @@
 "use client";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, useSession, SessionProvider } from "next-auth/react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -31,6 +31,8 @@ const Home = () => {
     console.log(session);
   };
   return (
+    <SessionProvider session={session}>
+
     <section className="w-full flex-center flex-col ">
       <h1 className="head_text text-center">
         Task
@@ -71,14 +73,14 @@ const Home = () => {
           <button
             type="submit"
             className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white w-max"
-          >
+            >
             Sign In
           </button>
           <button
             type="button"
             className="px-5 py-1.5 text-sm bg_green_gradient rounded-full text-white w-max"
             onClick={() => signIn("google")}
-          >
+            >
             Google
           </button>
         </div>
@@ -91,6 +93,7 @@ const Home = () => {
         </Link>
       </p>
     </section>
+            </SessionProvider>
   );
 };
 
