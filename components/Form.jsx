@@ -2,9 +2,9 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const Form = ({ type, data, setPost, submitting, handleSubmit }) => {
-  const dueDate = data?.dueDate.split("/").reverse().join("-");
-  const [status, setStatus] = useState(data?.status);
+const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
+  const dueDate = task?.dueDate.split("/").reverse().join("-");
+  const [status, setStatus] = useState(task?.status);
   return (
     <section className="w-full max-w-full flex-start flex-col">
       <h1 className="head_text text-left">
@@ -20,9 +20,9 @@ const Form = ({ type, data, setPost, submitting, handleSubmit }) => {
             Title
           </span>
           <input
-            value={data?.title}
+            value={task?.title}
             type="text"
-            onChange={(e) => setPost({ ...post, prompt: e.target.value })}
+            onChange={(e) => setTask({ ...task, title: e.target.value })}
             placeholder="write your task title here"
             required
             className="form_input"
@@ -33,8 +33,8 @@ const Form = ({ type, data, setPost, submitting, handleSubmit }) => {
             Description
           </span>
           <textarea
-            value={data?.desc}
-            onChange={(e) => setPost({ ...post, prompt: e.target.value })}
+            value={task?.desc}
+            onChange={(e) => setTask({ ...task, task: e.target.value })}
             placeholder="write your task description here"
             required
             className="form_textarea"
@@ -47,7 +47,7 @@ const Form = ({ type, data, setPost, submitting, handleSubmit }) => {
           <input
             value={dueDate}
             type="date"
-            onChange={(e) => setPost({ ...post, prompt: e.target.value })}
+            onChange={(e) => setTask({ ...task, dueDate: e.target.value })}
             required
             className="form_input"
           />
