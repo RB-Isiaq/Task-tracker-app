@@ -20,12 +20,12 @@ const CreateTask = () => {
     e.preventDefault();
     setSubmitting(true);
     
-const form = new FormData(e.target);
+    const form = new FormData(e.target);
     const formData = Object.fromEntries(form.entries());
-    formData.userId = session?.uṣer.name;
+    // formData.userId = "gugy" || session?.uṣer.name;
     
     try {
-      const res = await fetch("/api/task/new", {
+      const res = await fetch("/api/task/new/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
