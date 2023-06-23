@@ -54,9 +54,10 @@ const Home = () => {
       {dashboard && <h1 className="text-lg">
         Go to your <Link href="/dashboard" className="orange_gradient">dashboard.</Link>
       </h1>}
-      {!dashboard && <h1 className="text-lg>
+      {!dashboard && <h1 className="text-lg">
        Please sign in to continue.
-      </h1> }
+      </h1>}
+            
       <form
         onSubmit={handleSubmit}
         className="relative w-full sm:w-[550px] flex gap-4 items-center flex-col mt-4 mb-4"
