@@ -25,7 +25,7 @@ const CreateTask = () => {
         method: "POST",
         body: JSON.stringify({
           title: task.title,
-          desc: tasj.desc,
+          desc: task.desc,
           dueDate: task.dueDate,
           status: task.status,
           userId: session?.user?.id,
