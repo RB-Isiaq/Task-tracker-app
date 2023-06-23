@@ -5,16 +5,18 @@ import { useRouter } from "next/navigation";
 
 import Form from "@components/Form";
 
-const CreatePrompt = () => {
+const CreateTask = () => {
   const router = useRouter();
   const { data: session } = useSession();
   const [submitting, setSubmitting] = useState(false);
-  const [post, setPost] = useState({
-    prompt: "",
-    tag: "",
+  const [task, setTask] = useState({
+    title: "",
+    desc: "",
+    dueDate: "",
+    status: ""
   });
 
-  const createPrompt = async (e) => {
+  const createTask = async (e) => {
     e.preventDefault();
     setSubmitting(true);
 
@@ -22,14 +24,16 @@ const CreatePrompt = () => {
       const response = await fetch("/api/prompt/new", {
         method: "POST",
         body: JSON.stringify({
-          prompt: post.prompt,
-          userId: session?.user.id,
-          tag: post.tag,
+          title: task.title,
+          desc: tasj.desc,
+          dueDate: task.dueDate,
+          status: task.status,
+          userId: session?.user?.id,
         }),
       });
 
       if (response.ok) {
-        router.push("/");
+        router.push("/dashboard");
       }
     } catch (error) {
       console.log(error);
@@ -40,12 +44,12 @@ const CreatePrompt = () => {
   return (
     <Form
       type="Create"
-      post={post}
-      setPost={setPost}
+      task={task}
+      setTask={setTask}
       submitting={submitting}
-      handleSubmit={createPrompt}
+      handleSubmit={createTask}
     />
   );
 };
 
-export default CreatePrompt;
+export default CreateTask;
