@@ -2,8 +2,8 @@ import { Schema, model, models } from "mongoose";
 
 const TaskSchema = new Schema(
   {
-    userId: {
-      type: Schema.Types.ObjectId,
+    user: {
+      type: String,
       ref: "User",
     },
     title: {
