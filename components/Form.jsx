@@ -25,6 +25,7 @@ const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
             onChange={(e) => setTask({ ...task, title: e.target.value })}
             placeholder="write your task title here"
             required
+            name="title"
             className="form_input"
           />
         </label>
@@ -37,6 +38,7 @@ const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
             onChange={(e) => setTask({ ...task, desc: e.target.value })}
             placeholder="write your task description here"
             required
+            name="desc"
             className="form_textarea"
           />
         </label>
@@ -49,6 +51,7 @@ const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
             type="date"
             onChange={(e) => setDueDate(e.target.value)}
             required
+            name="dueDate"
             className="form_input"
           />
         </label>
@@ -57,7 +60,7 @@ const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
             Status
           </span>
           <select
-            name=""
+            name="status"
             id=""
             value={status}
             onChange={(e) => setStatus(e.target.value)}
