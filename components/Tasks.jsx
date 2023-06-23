@@ -1,6 +1,6 @@
 "use client";
 import TaskCard from "./TaskCard";
-import { data } from "@components";
+import { dummydata } from "@components";
 const TasksList = ({ data, sort }) => {
   let sortedData = data;
   if (sort === "title") {
@@ -42,7 +42,7 @@ const TasksList = ({ data, sort }) => {
 };
 
 const Tasks = ({ sort }) => {
-  return <TasksList data={data} sort={sort} />;
+  return <TasksList data={dummydata} sort={sort} />;
 };
 
 export default Tasks;
