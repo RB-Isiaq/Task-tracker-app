@@ -7,9 +7,13 @@ import { useRouter } from "next/navigation";
 
 const UserPage = () => {
   const [sort, setSort] = useState(null);
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
   console.log(session);
+
+  if (status === "unauthenticated" ) {
+    router.push("/")
+  }
 
   return (
     <section className="w-full flex items-center flex-col mb-4">
