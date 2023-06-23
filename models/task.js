@@ -2,7 +2,7 @@ import { Schema, model, models } from "mongoose";
 
 const TaskSchema = new Schema(
   {
-    user: {
+    userId: {
       type: String,
       ref: "User",
     },
@@ -26,6 +26,6 @@ const TaskSchema = new Schema(
   { timestamps: true }
 );
 
-const Task = models.Task || model("Task", TaskSchema);
+const Task = model("Task", TaskSchema);
 
 export default Task;
