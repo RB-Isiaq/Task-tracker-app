@@ -21,7 +21,7 @@ const UserPage = () => {
         Welcome to your dashboard,{" "}
         <span className="orange_gradient">{session?.user?.name}.</span>
       </h1>
-      <Link href="/create-prompt">
+      <Link href="/dashboard/create-task">
         <button
           type="button"
           className="px-5 py-2 w-[200px] mx-auto mt-6 text-lg bg_green_gradient rounded-full text-white"
