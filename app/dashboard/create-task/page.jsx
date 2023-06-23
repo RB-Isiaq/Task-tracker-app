@@ -23,6 +23,8 @@ const CreateTask = () => {
     try {
       const response = await fetch("/api/prompt/new", {
         method: "POST",
+        headers: {
+          "Content-type": "application/json"},
         body: JSON.stringify({
           title: task.title,
           desc: task.desc,
@@ -37,6 +39,7 @@ const CreateTask = () => {
       }
     } catch (error) {
       console.log(error);
+      alert(error)
     } finally {
       setSubmitting(false);
     }
