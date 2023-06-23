@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
-import { useSession, SessionProvider } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 import Form from "@components/Form";
 
-const CreateTask = ({session}) => {
+const CreateTask = () => {
   const router = useRouter();
   const { data: session } = useSession();
   const [submitting, setSubmitting] = useState(false);
@@ -28,7 +28,7 @@ const CreateTask = ({session}) => {
           desc: task.desc,
           dueDate: task.dueDate,
           status: task.status,
-          userId: session?.user.name,
+          userId: 1,
         }),
       });
 
@@ -42,7 +42,7 @@ const CreateTask = ({session}) => {
     }
   };
   return (
-    <SessionProvider session={session}>
+  
     
     <Form
       type="Create"
@@ -51,7 +51,7 @@ const CreateTask = ({session}) => {
       submitting={submitting}
       handleSubmit={createTask}
     />
-      </SessionProvider>
+      
   );
 };
 
