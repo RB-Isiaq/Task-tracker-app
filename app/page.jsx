@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const Home = () => {
-  const session = useSession();
+const Home = ({ session }) => {
+  const {data: session, status} = useSession();
   const router = useRouter();
   const params = useSearchParams();
   const [error, setError] = useState("");
@@ -25,7 +25,7 @@ const Home = () => {
       username,
       password,
     });
-    if (session.status === "authenticated") {
+    if (status === "authenticated") {
       router.push("/dashboard");
     }
     console.log(session);
