@@ -1,8 +1,7 @@
 "use client";
 import { signIn, useSession, SessionProvider } from "next-auth/react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/router";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Home = () => {
