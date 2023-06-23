@@ -1,11 +1,11 @@
 "use client";
-import { signIn, useSession, SessionProvider } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const Home = ({ session }) => {
-  const {data: session, status} = useSession();
+const Home = () => {
+  // const {data: session, status} = useSession();
   const router = useRouter();
   const params = useSearchParams();
   const [error, setError] = useState("");
@@ -25,13 +25,12 @@ const Home = ({ session }) => {
       username,
       password,
     });
-    if (status === "authenticated") {
+   // if (status === "authenticated") {
      // router.push("/dashboard");
-    }
-    console.log(session);
+    // }
+    conso//le.log(session);
   };
   return (
-    <SessionProvider session={session}>
 
     <section className="w-full flex-center flex-col ">
       <h1 className="head_text text-center">
@@ -96,7 +95,7 @@ const Home = ({ session }) => {
         </Link>
       </p>
     </section>
-            </SessionProvider>
+            
   );
 };
 
