@@ -26,7 +26,7 @@ const Home = ({ session }) => {
       password,
     });
     if (status === "authenticated") {
-      router.push("/dashboard");
+     // router.push("/dashboard");
     }
     console.log(session);
   };
