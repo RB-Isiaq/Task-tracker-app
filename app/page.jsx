@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Home = () => {
-  // const {data: session, status} = useSession();
+  const {data: session, status} = useSession();
   const router = useRouter();
   const params = useSearchParams();
   const [error, setError] = useState("");
@@ -25,10 +25,10 @@ const Home = () => {
       username,
       password,
     });
-   // if (status === "authenticated") {
-     // router.push("/dashboard");
-    // }
-    conso//le.log(session);
+    if (status === "authenticated") {
+     router.push("/dashboard");
+    }
+    console.log(session);
   };
   return (
 
@@ -44,7 +44,7 @@ const Home = () => {
         effortlessly.
       </p>
       <h1 className="text-2xl font-bold orange_gradient mt-4">
-        {success ? success : "Welcome Back"}
+        {success ? success : `Welcome Back ${session?.user.name}`}
       </h1>
       <h1 className="text-lg orange_gradient">
         Please sign in to see your dashboard.
@@ -69,15 +69,13 @@ const Home = () => {
           className="search_input peer"
         />
         <div className="flex justify-between gap-10">
-         <Link href="/dashboard" >
-         
+        
           <button
             type="submit"
             className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white w-max"
             >
             Sign In
           </button>
-           </Link>
           <button
             type="button"
             className="px-5 py-1.5 text-sm bg_green_gradient rounded-full text-white w-max"
