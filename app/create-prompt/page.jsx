@@ -28,7 +28,7 @@ const CreateTask = () => {
           desc: task.desc,
           dueDate: task.dueDate,
           status: task.status,
-          userId: session?.user?._id,
+          userId: session?.user.id,
         }),
       });
 
