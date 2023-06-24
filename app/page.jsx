@@ -1,11 +1,11 @@
-"use client";
+
 import Link from "next/link";
 
 const Home = () => {
   
   return (
 
-    <section className="w-full flex-center flex-col mb-6">
+    <section className="w-full flex-center flex-col">
       <h1 className="head_text text-center">
         Task
         <span className="orange_gradient text_center"> Tracker App</span>
@@ -17,11 +17,9 @@ const Home = () => {
         effortlessly.
       </p>
       
-       <h1 className="text-lg">
+       <p className="text-lg">
         Please <Link href="/dashboard" className="orange_gradient">sign in </Link> to continue
-      </h1>
-      
-            
+       </p>
     
     </section>
             
