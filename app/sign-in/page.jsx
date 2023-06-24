@@ -22,10 +22,12 @@ const SignIn= () => {
     const { username, password } = Object.fromEntries(form.entries());
 
     signIn("credentials", {
+      redirect: true,
       username,
       password,
+      callbackUrl: "/dashboard",
     });
-    router.push("/dashboard")
+    // router.push("/dashboard")
     // if (status === "authenticated") {
       
     // } 
