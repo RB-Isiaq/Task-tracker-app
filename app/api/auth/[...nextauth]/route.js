@@ -56,32 +56,32 @@ const handler = NextAuth({
 
        return session;
     },
-     async signIn({ profile }) {
-      try {
-         await connectToDB();
+    // async signIn({ profile }) {
+    //  try {
+      //   await connectToDB();
 
-        console.log(profile);
-         // check if a user already exists
-       const userExists = await User.findOne({
-           email: profile?.email,
-         });
+    //    console.log(profile);
+      //   // check if a user already exists
+     //  const userExists = await User.findOne({
+     //      email: profile?.email,
+      //   });
 
-        console.log(userExists);
+     //   console.log(userExists);
 
-      // if not, create a new user
-       if (!userExists) {
-          await User.create({
-            email: profile?.email,
-            username: profile.name.replaceAll(" ", "").toLowerCase(),
-          });
-       }
+    //  // if not, create a new user
+    //   if (!userExists) {
+     //     await User.create({
+      //      email: profile?.email,
+        //  username: profile.name.replaceAll(" ", "").toLowerCase(),
+       //   });
+    //   }
 
-       return true;
-     } catch (error) {
-        console.log(error);
-       return false;
-     }
-   },
+      // return true;
+   //  } catch (error) {
+      //  console.log(error);
+     //  return false;
+    // }
+  // },
   },
   pages: {
     error: "/",
