@@ -1,8 +1,6 @@
-
 import Link from "next/link";
 
 const Home = () => {
-  
   return (
 
     <section className="w-full flex-center flex-col">
@@ -17,7 +15,7 @@ const Home = () => {
         effortlessly.
       </p>
       
-       <p className="text-lg">
+       <p className="text-lg my-6">
         Please <Link href="/dashboard" className="orange_gradient">sign in </Link> to continue
        </p>
     
