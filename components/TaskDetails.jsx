@@ -12,9 +12,9 @@ const TaskDetails = ({ data }) => {
           <div className="flex gap-2 items-center">
             <div
               className={`w-[10px] h-[10px] rounded-full ${
-                data?.status === "Completed"
+                data?.status === "completed"
                   ? "bg-green-500"
-                  : status === "In progress"
+                  : status === "in-progress"
                   ? "bg-blue-500"
                   : "bg-red-400"
               }`}
