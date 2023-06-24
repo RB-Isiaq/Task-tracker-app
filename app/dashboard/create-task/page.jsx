@@ -22,10 +22,10 @@ const CreateTask = () => {
     
     const form = new FormData(e.target);
     const formData = Object.fromEntries(form.entries());
-    // formData.userId = "gugy" || session?.uṣer.name;
+     formData.userId = session?.uṣer.id;
     
     try {
-      const res = await fetch("/api/task/new/", {
+      const res = await fetch("/api/task/new", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,6 +36,7 @@ const CreateTask = () => {
     } catch (error) {
       setError(error);
       console.log(error);
+      alert(error)
     } finally {
       setSubmitting(false);
     }
