@@ -6,7 +6,7 @@ export const GET = async (request, {session}) => {
     try {
         await connectToDB()
 
-        const tasks = await Task.find({}).populate({ match: {userId: id} });
+        const tasks = await Task.find({}).populate("userId");
 
         return new Response(JSON.stringify(tasks), { status: 200 })
     } catch (error) {
