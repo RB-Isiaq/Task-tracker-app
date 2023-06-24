@@ -5,13 +5,13 @@ import { useState, useEffect } from "react";
 
 const SignIn= () => {
   const [error, setError] = useState(null);
-    
+    const [success, setSuccess] = useState("");
   const {data: session, status} = useSession();
   const router = useRouter();
 
   useEffect(() => {
     setError(params.get("error"))
-    
+    setSuccess(params.get("success"))
   }, [params]);
   const handSubmit = async (e) => {
     e.preventDefault();
@@ -34,12 +34,13 @@ const SignIn= () => {
         action="post"
         className="flex flex-col gap-4 items-center mt-10 mb-4 w-full sm:w-[550px]"
       >
-        <h1 className="text-lg blue_gradient">Login</h1>
+        <h1 className="text-lg blue_gradient">{success ? success : "Welcome Back"}</h1>
         <input
           type="username"
           placeholder="username"
           required
           name="username"
+          autofocus 
           className="search_input peer"
         />
         <input
