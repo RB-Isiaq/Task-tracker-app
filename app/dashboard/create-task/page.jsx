@@ -13,17 +13,18 @@ const CreateTask = () => {
     title: "",
     desc: "",
     dueDate: "",
-    status: ""
+    status: "",
   });
 
   const createTask = async (e) => {
     e.preventDefault();
     setSubmitting(true);
-    
+
     const form = new FormData(e.target);
     const formData = Object.fromEntries(form.entries());
-     formData.userId = session?.uṣer.id;
-    
+    console.log(session);
+    formData.userId = session?.user.id;
+    console.log(formData);
     try {
       const res = await fetch("/api/task/new", {
         method: "POST",
@@ -32,17 +33,17 @@ const CreateTask = () => {
         },
         body: JSON.stringify(formData),
       });
+      console.log(res);
       res.status === 201 && router.push("/dashboard");
     } catch (error) {
       setError(error);
       console.log(error);
-      alert(error)
+      alert(error);
     } finally {
       setSubmitting(false);
     }
   };
   return (
-    
     <Form
       type="Create"
       task={task}
@@ -50,7 +51,6 @@ const CreateTask = () => {
       submitting={submitting}
       handleSubmit={createTask}
     />
-      
   );
 };
 

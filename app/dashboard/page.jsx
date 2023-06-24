@@ -9,10 +9,10 @@ const UserPage = () => {
   const [sort, setSort] = useState(null);
   const { data: session, status } = useSession();
   const router = useRouter();
-  console.log(session);
+  console.log(status);
 
-  if (status === "unauthenticated" ) {
-    router.push("/sign-in")
+  if (status === "unauthenticated") {
+    router.push("/sign-in");
   }
 
   return (
