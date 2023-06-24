@@ -49,7 +49,7 @@ const handler = NextAuth({
     async session({ session }) {
        const sessionUser = await User.findOne({
         // email: session.user.email,
-       username: session.user.username,
+       name: session.user.name,
       });
   //     console.log(sessionUser);
     session.user.id = sessionUser._id.toString();
