@@ -19,7 +19,7 @@ const SignUp = () => {
         },
         body: JSON.stringify(formData),
       });
-      res.status === 201 && router.push("/?success=Account has been created");
+      res.status === 201 && router.push("/sign-in?success=Account has been created");
     } catch (error) {
       setError(error);
       console.log(error);
