@@ -1,29 +1,31 @@
 "use client";
 import Link from "next/link";
 import { useRouter, useSession } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const SignIn= () => {
   const [error, setError] = useState(null);
+    
+  const {data: session, status} = useSession();
   const router = useRouter();
+
+  useEffect(() => {
+    setError(params.get("error"))
+    
+  }, [params]);
   const handSubmit = async (e) => {
     e.preventDefault();
+   
     const form = new FormData(e.target);
-    const formData = Object.fromEntries(form.entries());
-    console.log(formData);
-    try {
-      const res = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      res.status === 201 && router.push("/?success=Account has been created");
-    } catch (error) {
-      setError(error);
-      console.log(error);
-    }
+    const { username, password } = Object.fromEntries(form.entries());
+
+    signIn("credentials", {
+      username,
+      password,
+    });
+    if (status === "authenticated") {
+      router.push("/dashboard");
+    } 
   };
   return (
     <>
@@ -33,13 +35,6 @@ const SignIn= () => {
         className="flex flex-col gap-4 items-center mt-10 mb-4 w-full sm:w-[550px]"
       >
         <h1 className="text-lg blue_gradient">Login</h1>
-        <input
-          type="text"
-          placeholder="Full name"
-          required
-          name="fullName"
-          className="search_input peer"
-        />
         <input
           type="username"
           placeholder="username"
@@ -54,12 +49,23 @@ const SignIn= () => {
           name="password"
           className="search_input peer"
         />
-        <button
-          type="submit"
-          className="px-5 py-1.5 text-sm bg_blue_gradient rounded-full text-white w-max"
-        >
-          Sign In
-        </button>
+          <div className="flex justify-between gap-10">
+        
+          <button
+            type="submit"
+            className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white w-max"
+            >
+            Sign In
+          </button>
+          <button
+            type="button"
+            className="px-5 py-1.5 text-sm bg_green_gradient rounded-full text-white w-max"
+            onClick={() => signIn("google")}
+            >
+            Google
+          </button>
+        </div>
+     
       </form>
       {error && <p className="text-red-400">{error}</p>}
       <p>
