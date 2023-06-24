@@ -12,7 +12,7 @@ const UserPage = () => {
   console.log(session);
 
   if (status === "unauthenticated" ) {
-    router.push("/")
+    router.push("/sign-in")
   }
 
   return (
