@@ -64,7 +64,7 @@ const SignUp = () => {
       {error && <p className="text-red-400">{error}</p>}
       <p>
         Already have an account?{" "}
-        <Link href="/">
+        <Link href="/sign-in">
           <span className="orange_gradient">Sign In</span>
         </Link>
       </p>
