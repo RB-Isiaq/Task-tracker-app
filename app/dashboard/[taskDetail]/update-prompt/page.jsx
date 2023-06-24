@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { data } from "@components";
+import { dummydata } from "@components";
 
 import Form from "@components/Form";
 
@@ -11,7 +11,7 @@ const EditTask = () => {
   console.log(pathName);
   const taskID = pathName.split("/").splice(2, 1).join("");
   console.log(taskID);
-  const taskEdit = data.filter((item) => item.id === +taskID);
+  const taskEdit = dummydata.filter((item) => item.id === +taskID);
   console.log(dataEdit);
   const [submitting, setSubmitting] = useState(false);
   const [task, setTask] = useState({
