@@ -2,7 +2,7 @@ import Task from "@models/task";
 import { connectToDB } from "@utils/database";
 
 export const GET = async (request, {session}) => {
-    const id = session?.user.id;
+    const id = "6493bc96b2e86b83ef934a5d";
     try {
         await connectToDB()
 
