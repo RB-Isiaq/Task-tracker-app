@@ -25,9 +25,10 @@ const SignIn= () => {
       username,
       password,
     });
-    if (status === "authenticated") {
-      router.push("/dashboard");
-    } 
+    router.push("/dashboard")
+    // if (status === "authenticated") {
+      
+    // } 
   };
   return (
     <>
