@@ -1,8 +1,8 @@
 import Task from "@models/task";
 import { connectToDB } from "@utils/database";
 
-export const GET = async (request, {params}) => {
-    const id = params.id.toString();
+export const GET = async (request, {session}) => {
+    const id = session?.user.id;
     try {
         await connectToDB()
 
