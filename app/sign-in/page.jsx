@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
-import { signIn, useRouter, useSession, useSearchParams } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const SignIn= () => {
