@@ -1,11 +1,11 @@
 "use client";
 import TaskDetails from "@components/TaskDetails";
 import { useParams } from "next/navigation";
-import { data } from "@components";
+import { dummydata } from "@components";
 
 const TaskDetail = () => {
   const { taskDetail } = useParams();
-  const dataDetails = data?.filter((item) => item.id === +taskDetail);
+  const dataDetails = dummydata?.filter((item) => item.id === +taskDetail);
   return <TaskDetails data={dataDetails[0]} />;
 };
 
