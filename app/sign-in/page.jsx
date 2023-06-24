@@ -1,11 +1,12 @@
 "use client";
 import Link from "next/link";
-import { useRouter, useSession } from "next/navigation";
+import { useRouter, useSession, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const SignIn= () => {
   const [error, setError] = useState(null);
     const [success, setSuccess] = useState("");
+  const params = useSearchParams();
   const {data: session, status} = useSession();
   const router = useRouter();
 
