@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+
 
 import TaskCard from "./TaskCard";
 
@@ -45,23 +45,23 @@ const TasksList = ({ data, sort }) => {
 };
 
 const Tasks = ({ sort, userSessionId }) => {
-  const [allTasks, setAllTasks] = useState([]);
-  const path = usePathname();
-
+ // const [allTasks, setAllTasks] = useState([]);
   
+
+  let allTasks = [];
   const fetchTasks = async () => {
     const response = await fetch("/api/task");
     const dataRes = await response.json();
-    const userData = dataRes.filter((data) => data.userId === userSessionId);
-    console.log(userData);
-    setAllTasks(userData);
+     allTasks = dataRes.filter((data) => data.userId === userSessionId);
+    console.log(allTasks);
+    // setAllTasks(userData);
   };
 
   // fetchTasks();
   useEffect(() => {
     fetchTasks();
     
-  }, [fetchTasks, path]);
+  }, [fetchTasks]);
   return <TasksList data={allTasks} sort={sort} />;
 };
 
