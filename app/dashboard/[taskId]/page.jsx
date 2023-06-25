@@ -1,7 +1,7 @@
 "use client";
 import TaskDetails from "@components/TaskDetails";
 import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useSWR from "swr";
 
 const TaskDetail = () => {
