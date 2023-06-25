@@ -14,7 +14,7 @@ const TaskDetails = ({ data, deleteHandler }) => {
               className={`w-[10px] h-[10px] rounded-full ${
                 data?.status === "Completed"
                   ? "bg-green-500"
-                  : data.?status === "In progress"
+                  : data?.status === "In progress"
                   ? "bg-blue-500"
                   : "bg-red-400"
               }`}
