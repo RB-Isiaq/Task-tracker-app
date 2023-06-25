@@ -57,8 +57,10 @@ const Tasks = ({ sort, userSessionId }) => {
   // fetchTasks();
   useEffect(() => {
     fetchTasks();
-    
-  }, [fetchTasks]);
+    if (userSessionId) {
+      fetchTasks();
+    }
+  }, [fetchTasks, userSessionId]);
   return <TasksList data={allTasks} sort={sort} />;
 };
 
