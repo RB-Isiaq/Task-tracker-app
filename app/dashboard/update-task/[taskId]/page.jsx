@@ -10,7 +10,12 @@ const UpdateTask = () => {
   const {data: session} = useSession();
   const {taskId} = useParams();
   const [submitting, setSubmitting] = useState(false);
-  const [task, setTask] = useState((});
+  const [task, setTask] = useState((
+    task.title: "",
+    task.desc: "",
+    task.dueDate: "",
+    task.status: ""
+    });
 
   console.log(taskId)
   
