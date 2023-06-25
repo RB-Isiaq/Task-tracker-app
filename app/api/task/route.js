@@ -6,7 +6,7 @@ export const GET = async (request) => {
   try {
     await connectToDB();
 
-    const tasks = await Task.find({});
+    const tasks = await Task.find({}).populate('userId');
     console.log(tasks)
     return new NextResponse(JSON.stringify(tasks), {
       status: 200,
