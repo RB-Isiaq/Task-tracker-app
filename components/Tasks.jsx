@@ -43,7 +43,7 @@ const TasksList = ({ data, sort }) => {
   );
 };
 
-const Tasks = ({ sort, userSessionId }) => {
+const Tasks = ({ sort, userSessionId, fetchTasks }) => {
   const [allTasks, setAllTasks] = useState([]);
  
   const fetchTasks = async () => {
