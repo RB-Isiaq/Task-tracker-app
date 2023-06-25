@@ -52,9 +52,9 @@ const Tasks = ({ sort, userSessionId }) => {
   const fetchTasks = async () => {
     const response = await fetch("/api/task");
     const dataRes = await response.json();
-    // const userData = dataRes.filter((data) => data.userId === userSessionId);
-    // console.log(userData);
-    setAllTasks(dataRes);
+    const userData = dataRes.filter((data) => data.userId === userSessionId);
+    console.log(userData);
+    setAllTasks(userData);
   };
 
   // fetchTasks();
