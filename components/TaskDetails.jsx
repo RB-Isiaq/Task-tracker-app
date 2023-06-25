@@ -3,7 +3,7 @@ import Link from "next/link";
 const TaskDetails = ({ data, deleteHandler }) => {
   return (
     <section className="flex flex-col justify-center items-center h-screen">
-      <div className="flex flex-col gap-6 justify-center items-center py-10 px-4 glassmorphism">
+      <div className="flex flex-col gap-6 justify-center items-center py-10 px-2 sm:px-4 glassmorphism">
         <h1 className="capitalize text-center font-semibold text-2xl mb-4">
           {data?.title}
         </h1>
