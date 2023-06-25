@@ -1,10 +1,17 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
   const [dueDate, setDueDate] = useState(task?.dueDate.split("/").reverse().join("-"));
   const [status, setStatus] = useState(task?.status);
+
+  useEffect(() => {
+    setTask(...task, dueDate: dueDate)
+    setTask(...task, status: status)
+
+  }, [task])
+  
   return (
     <section className="w-full max-w-full flex-start flex-col">
       <h1 className="head_text text-left">
@@ -47,7 +54,7 @@ const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
             Due date
           </span>
           <input
-            value={dueDate}
+            value={task?.dueDate}
             type="date"
             onChange={(e) => setDueDate(e.target.value)}
             required
@@ -62,7 +69,7 @@ const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
           <select
             name="status"
             id=""
-            value={status}
+            value={task?.status}
             onChange={(e) => setStatus(e.target.value)}
             className="form_input"
           >
