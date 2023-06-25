@@ -10,10 +10,10 @@ const UpdateTask = () => {
   const {data: session} = useSession();
   const pathName = usePathname();
   const [submitting, setSubmitting] = useState(false);
-  const [task, setTask] = useState({});
+  const [task, setTask] = useState([]);
 
   console.log(pathName);
-  const taskId = pathName.split("/").splice(3, 1).join("");
+  const taskId = pathName.split("/").splice(2, 1).join("");
   console.log(taskId);
 
   
@@ -76,7 +76,7 @@ const getTaskDetails = async () => {
   return (
     <Form
       type="Edit"
-      task={task}
+      task={task[0]}
       setTask={setTask}
       submitting={submitting}
       handleSubmit={updateTask}
