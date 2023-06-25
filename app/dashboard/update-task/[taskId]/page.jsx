@@ -11,10 +11,10 @@ const UpdateTask = () => {
   const {taskId} = useParams();
   const [submitting, setSubmitting] = useState(false);
   const [task, setTask] = useState({
-    task.title: "",
-    task.desc: "",
-    task.dueDate: "",
-    task.status: ""
+    title: "",
+    desc: "",
+    dueDate: "",
+    status: ""
     });
 
   console.log(taskId)
