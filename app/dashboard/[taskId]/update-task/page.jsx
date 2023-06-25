@@ -1,11 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 
 import Form from "@components/Form";
 
 const UpdateTask = () => {
   const router = useRouter();
+  const {data: session} = useSession();
   const pathName = usePathname();
   const [submitting, setSubmitting] = useState(false);
   const [task, setTask] = useState({
@@ -32,7 +34,8 @@ const UpdateTask = () => {
       });
     };
 
-    if (taskId) getTaskDetails();
+    // if (taskId) getTaskDetails();
+    getTaskDetails();
   }, []);
 
   const updateTask = async (e) => {
@@ -40,9 +43,9 @@ const UpdateTask = () => {
     setSubmitting(true);
     const form = new Form(e.target);
     const formData = Object.fromEntries(form.entries());
-
+    formData.userId = session?.user.id;
     console.log(formData);
-    if (!taskId) alert("Task ID not found");
+    // if (!taskId) alert("Task ID not found");
     try {
       const res = await fetch(`/api/task/${taskId}`, {
         method: "PATCH",
@@ -52,7 +55,7 @@ const UpdateTask = () => {
         body: JSON.stringify(formData),
       });
       console.log(res);
-      res.status === 201 && router.push("/dashboard");
+      res.ok === true && router.push("/dashboard");
     } catch (error) {
       setError(error);
       console.log(error);
