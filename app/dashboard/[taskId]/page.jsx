@@ -16,7 +16,7 @@ const TaskDetail = () => {
     `/api/task/${taskId}`,
     fetcher
   );
-  setTasks(data)
+  setTask(data)
   
  // const fetchTask = async () => {
    // const response = await fetch(`/api/task/${taskId}`);
