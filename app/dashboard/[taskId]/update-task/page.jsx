@@ -10,29 +10,20 @@ const UpdateTask = () => {
   const {data: session} = useSession();
   const pathName = usePathname();
   const [submitting, setSubmitting] = useState(false);
-  const [task, setTask] = useState({
-    title: "",
-    desc: "",
-    dueDate: "",
-    status: "",
-  });
+  const [task, setTask] = useState({});
 
   console.log(pathName);
   const taskId = pathName.split("/").splice(2, 1).join("");
   console.log(taskId);
 
-  useEffect(() => {
-    const getTaskDetails = async () => {
+  const getTaskDetails = async () => {
       const response = await fetch(`/api/task/${taskId}`);
       const data = await response.json();
 
-      setTask({
-        title: data.title,
-        desc: data.desc,
-        dueDate: data.dueDate,
-        status: data.status,
-      });
+      setTask(data);
     };
+  
+  useEffect(() => {
 
     // if (taskId) getTaskDetails();
     getTaskDetails();
@@ -49,9 +40,6 @@ const UpdateTask = () => {
     try {
       const res = await fetch(`/api/task/${taskId}`, {
         method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
         body: JSON.stringify(formData),
       });
       console.log(res);
