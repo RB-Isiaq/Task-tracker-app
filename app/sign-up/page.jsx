@@ -36,7 +36,7 @@ const SignUp = () => {
         <h1 className="text-lg blue_gradient">Get Started</h1>
         <input
           type="text"
-          placeholder="Full name"
+          placeholder="name"
           required
           name="fullName"
           className="search_input peer"

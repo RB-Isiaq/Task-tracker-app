@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import TaskCard from "./TaskCard";
-import { dummydata } from "@components";
 
 const TasksList = ({ data, sort }) => {
   let sortedData = data;
