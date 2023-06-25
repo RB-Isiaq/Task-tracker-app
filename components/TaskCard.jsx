@@ -12,9 +12,9 @@ const TaskCard = ({ id, title, status, dueDate }) => {
           <div className="flex gap-2 items-center">
             <div
               className={`w-[10px] h-[10px] rounded-full ${
-                status === "completed"
+                status === "Completed"
                   ? "bg-green-500"
-                  : status === "in-progress"
+                  : status === "In progress"
                   ? "bg-blue-500"
                   : "bg-red-400"
               }`}
