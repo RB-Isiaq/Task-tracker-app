@@ -16,16 +16,16 @@ const TaskDetail = () => {
     `/api/task/${taskId}`,
     fetcher
   );
-  setTask(data)
+//  setTask(data)
   
- // const fetchTask = async () => {
-   // const response = await fetch(`/api/task/${taskId}`);
-   // const data = await response.json();
-    // console.log(data);
-   // setTask(data);
-  // };
+  const fetchTask = async () => {
+    const response = await fetch(`/api/task/${taskId}`);
+   const dataRes = await response.json();
+  //  console.log(data);
+   setTask(dataRes);
+   };
 
-  //fetchTask();
+  fetchTask();
 
   const handleDelete = async () => {
     const response = await fetch(`/api/task/${taskId}`, {
