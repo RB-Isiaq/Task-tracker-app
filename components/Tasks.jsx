@@ -1,27 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 
-
 import TaskCard from "./TaskCard";
 
-const TasksList = ({  sort, userSessionId }) => {
-  const [allTasks, setAllTasks] = useState([]);
- 
-  const fetchTasks = async () => {
-    const response = await fetch("/api/task");
-    const dataRes = await response.json();
-    const userData = dataRes.filter((data) => data.userId === userSessionId);
-    console.log(userData);
-    setAllTasks(userData);
-  };
-
-  // fetchTasks();
-  useEffect(() => {
-    fetchTasks();
-    
-  }, []);
-  
-  let sortedData = allTasks;
+const TasksList = ({ data, sort }) => {
+  let sortedData = data;
   if (sort === "title") {
     sortedData = data.sort((a, b) => {
       if (a.title < b.title) return -1;
@@ -61,8 +44,22 @@ const TasksList = ({  sort, userSessionId }) => {
 };
 
 const Tasks = ({ sort, userSessionId }) => {
-  
-  return <TasksList sort={sort} userSessionId={userSessionId}/>;
+  const [allTasks, setAllTasks] = useState([]);
+ 
+  const fetchTasks = async () => {
+    const response = await fetch("/api/task");
+    const dataRes = await response.json();
+    const userData = dataRes.filter((data) => data.userId === userSessionId);
+    console.log(userData);
+    setAllTasks(userData);
+  };
+
+  // fetchTasks();
+  useEffect(() => {
+    fetchTasks();
+    
+  }, []);
+  return <TasksList data={allTasks} sort={sort} />;
 };
 
 export default Tasks;
