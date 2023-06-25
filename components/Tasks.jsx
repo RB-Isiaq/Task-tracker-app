@@ -54,7 +54,7 @@ const Tasks = ({ sort, userSessionId }) => {
     const dataRes = await response.json();
     const userData = dataRes.filter((data) => data.userId === userSessionId);
     console.log(userData);
-    setAllTasks(userData);
+    setAllTasks(dataRes);
   };
 
   // fetchTasks();
