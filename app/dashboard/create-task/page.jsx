@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffèct } from "react";
+import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -43,9 +43,7 @@ const CreateTask = () => {
       setSubmitting(false);
     }
   };
-useEffect(() => {
-    router.prefetch("/dashboard")
-}, [router])
+
   
  return (
     <Form
