@@ -62,7 +62,7 @@ const Tasks = ({ sort, userSessionId }) => {
     fetchTasks();
     
   }, []);
-  return <TasksList data={allTasks} sort={sort} />;
+  return <TasksList data={allTasks} sort={sort} refetchHandler={fetchTasks}/>;
 };
 
 export default Tasks;
