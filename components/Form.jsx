@@ -7,8 +7,8 @@ const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
   const [status, setStatus] = useState(task?.status);
 
   useEffect(() => {
-    setTask(...task, dueDate: dueDate)
-    setTask(...task, status: status)
+    setTask({...task, dueDate: dueDate})
+    setTask({...task, status: status})
 
   }, [task])
   
