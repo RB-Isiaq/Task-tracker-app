@@ -45,7 +45,7 @@ const getTaskDetails = async () => {
         body: JSON.stringify(formData),
       });
       console.log(res);
-      res.ok === true && router.push("/dashboard");
+      res.status === 200 && router.push("/dashboard");
     } catch (error) {
       setError(error);
       console.log(error);
