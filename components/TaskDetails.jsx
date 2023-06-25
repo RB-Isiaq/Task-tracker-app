@@ -24,7 +24,7 @@ const TaskDetails = ({ data, deleteHandler }) => {
           <span>{data?.dueDate}</span>
         </div>
         <div className="flex justify-between w-full">
-          <Link href={`/dashboard/${data?.id}/update-task`}>
+          <Link href={`/dashboard/${data?._id}/update-task`}>
             <button
               type="button"
               className="px-5 py-2 text-lg bg-blue-400 rounded-full text-white"
