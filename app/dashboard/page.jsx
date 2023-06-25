@@ -12,6 +12,9 @@ const UserPage = () => {
   console.log(session);
   console.log(status);
 
+  // if (session === "undefined") {
+  //   router.push("/sign-in");
+  // }
   if (status === "unauthenticated") {
     router.push("/sign-in");
   }
@@ -64,7 +67,7 @@ const UserPage = () => {
         </div>
       </div>
 
-      <Tasks sort={sort} />
+      <Tasks sort={sort} userSessionId={session?.user.id} />
     </section>
   );
 };

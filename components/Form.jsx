@@ -66,9 +66,9 @@ const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
             onChange={(e) => setStatus(e.target.value)}
             className="form_input"
           >
-            <option value="not-started">Not started</option>
-            <option value="in-progress">In progress</option>
-            <option value="completed">Completed</option>
+            <option value="Not started">Not started</option>
+            <option value="In progress">In progress</option>
+            <option value="Completed">Completed</option>
           </select>
         </label>
         <div className="flex-end mx-3 mb-5 gap-4">

@@ -3,7 +3,7 @@ import { Schema, model, models } from "mongoose";
 const TaskSchema = new Schema(
   {
     userId: {
-      type: Schema.Types.ObjectId,
+      type: String,
       ref: "User",
     },
     title: {

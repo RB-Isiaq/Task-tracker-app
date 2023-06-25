@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-const TaskDetails = ({ data }) => {
+const TaskDetails = ({ data, deleteHandler }) => {
   return (
     <section className="flex flex-col justify-center items-center h-screen">
       <div className="flex flex-col gap-6 justify-center items-center py-10 px-4 glassmorphism">
@@ -12,9 +12,9 @@ const TaskDetails = ({ data }) => {
           <div className="flex gap-2 items-center">
             <div
               className={`w-[10px] h-[10px] rounded-full ${
-                data?.status === "completed"
+                data?.status === "Completed"
                   ? "bg-green-500"
-                  : status === "in-progress"
+                  : status === "In progress"
                   ? "bg-blue-500"
                   : "bg-red-400"
               }`}
@@ -24,7 +24,7 @@ const TaskDetails = ({ data }) => {
           <span>{data?.dueDate}</span>
         </div>
         <div className="flex justify-between w-full">
-          <Link href={`/dashboard/${data?.id}/update-prompt`}>
+          <Link href={`/dashboard/${data?.id}/update-task`}>
             <button
               type="button"
               className="px-5 py-2 text-lg bg-blue-400 rounded-full text-white"
@@ -35,6 +35,7 @@ const TaskDetails = ({ data }) => {
           <button
             type="button"
             className="px-5 py-2 text-lg bg-red-500 rounded-full text-white"
+            onClick={deleteHandler}
           >
             Delete
           </button>

@@ -19,14 +19,13 @@ const handler = NextAuth({
           const user = await User.findOne({
             username: credentials.username,
           });
-          console.log(user, "FIRST");
+
           if (user) {
             const isPasswordCorrect = await bcrypt.compare(
               credentials.password,
               user.password
             );
 
-            console.log(user, "SECOND");
             if (isPasswordCorrect) return user;
             else {
               throw new Error("Wrong Credentials");
@@ -47,41 +46,41 @@ const handler = NextAuth({
   ],
   callbacks: {
     async session({ session }) {
-       const sessionUser = await User.findOne({
+      const sessionUser = await User.findOne({
         // email: session.user.email,
-       name: session.user.name,
+        name: session.user.name,
       });
-  //     console.log(sessionUser);
-    session.user.id = sessionUser._id.toString();
+      //     console.log(sessionUser);
+      session.user.id = sessionUser._id.toString();
 
-       return session;
+      return session;
     },
     // async signIn({ profile }) {
     //  try {
-      //   await connectToDB();
+    //   await connectToDB();
 
     //    console.log(profile);
-      //   // check if a user already exists
-     //  const userExists = await User.findOne({
-     //      email: profile?.email,
-      //   });
+    //   // check if a user already exists
+    //  const userExists = await User.findOne({
+    //      email: profile?.email,
+    //   });
 
-     //   console.log(userExists);
+    //   console.log(userExists);
 
     //  // if not, create a new user
     //   if (!userExists) {
-     //     await User.create({
-      //      email: profile?.email,
-        //  username: profile.name.replaceAll(" ", "").toLowerCase(),
-       //   });
+    //     await User.create({
+    //      email: profile?.email,
+    //  username: profile.name.replaceAll(" ", "").toLowerCase(),
+    //   });
     //   }
 
-      // return true;
-   //  } catch (error) {
-      //  console.log(error);
-     //  return false;
+    // return true;
+    //  } catch (error) {
+    //  console.log(error);
+    //  return false;
     // }
-  // },
+    // },
   },
   pages: {
     error: "/",

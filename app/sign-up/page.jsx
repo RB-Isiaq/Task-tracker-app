@@ -19,7 +19,8 @@ const SignUp = () => {
         },
         body: JSON.stringify(formData),
       });
-      res.status === 201 && router.push("/sign-in?success=Account has been created");
+      res.status === 201 &&
+        router.push("/sign-in?success=Account has been created");
     } catch (error) {
       setError(error);
       console.log(error);
@@ -56,7 +57,7 @@ const SignUp = () => {
         />
         <button
           type="submit"
-          className="px-5 py-1.5 text-sm bg_blue_gradient rounded-full text-white w-max"
+          className="px-5 py-1.5 text-sm bg_blue_gradient rounded-full text-white w-max shadow-lg"
         >
           Sign Up
         </button>

@@ -59,17 +59,17 @@ const SignIn= () => {
         
           <button
             type="submit"
-            className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white w-max"
+            className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white w-max shadow-lg"
             >
             Sign In
           </button>
-          <button
+          {/* <button
             type="button"
-            className="px-5 py-1.5 text-sm bg_green_gradient rounded-full text-white w-max"
+            className="px-5 py-1.5 text-sm bg_green_gradient rounded-full text-white w-max shadow-lg"
             onClick={() => signIn("google")}
             >
             Google
-          </button>
+          </button> */}
         </div>
      
       </form>
