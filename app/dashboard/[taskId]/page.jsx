@@ -24,7 +24,7 @@ const TaskDetail = () => {
         id: taskId,
       },
     });
-    await response.json();
+    // await response.json();
     router.push("/dashboard");
   };
 
