@@ -13,7 +13,7 @@ const UpdateTask = () => {
   const [task, setTask] = useState([]);
 
   console.log(pathName);
-  const taskId = pathName.split("/").splice(2, 1).join("");
+  const taskId = pathName.split("/").splice(3, 1).join("");
   console.log(taskId);
 
   
