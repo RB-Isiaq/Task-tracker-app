@@ -17,6 +17,11 @@ const UserPage = () => {
   // }
   if (status === "unauthenticated") {
     router.push("/sign-in");
+    
+  }
+  if (status === "authenticated") {
+  
+    fetchTasks()
   }
 
   return (
@@ -67,7 +72,7 @@ const UserPage = () => {
         </div>
       </div>
 
-      <Tasks sort={sort} userSessionId={session?.user.id} />
+      <Tasks sort={sort} userSessionId={session?.user.id} fetchTasks={fetchTasks}/>
     </section>
   );
 };
