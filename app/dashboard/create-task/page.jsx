@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffèct } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -34,7 +34,7 @@ const CreateTask = () => {
         body: JSON.stringify(formData),
       });
       console.log(res);
-      res.status === 201 && router.prefetch("/dashboard");
+      res.status === 201 && router.push("/dashboard");
     } catch (error) {
       setError(error);
       console.log(error);
@@ -43,7 +43,11 @@ const CreateTask = () => {
       setSubmitting(false);
     }
   };
-  return (
+useEffect(() => {
+    router.prefetch("/dashboard")
+}, [router])
+  
+ return (
     <Form
       type="Create"
       task={task}
