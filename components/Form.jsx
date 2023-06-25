@@ -7,8 +7,8 @@ const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
   const [status, setStatus] = useState(task?.status);
 
   useEffect(() => {
-    setTask({...task, dueDate: dueDate})
-    setTask({...task, status: status})
+    // setTask({...task, dueDate: dueDate})
+   // setTask({...task, status: status})
 
   }, [task])
   
@@ -54,7 +54,7 @@ const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
             Due date
           </span>
           <input
-            value={task?.dueDate}
+            value={dueDate}
             type="date"
             onChange={(e) => setDueDate(e.target.value)}
             required
@@ -69,7 +69,7 @@ const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
           <select
             name="status"
             id=""
-            value={task?.status}
+            value={status}
             onChange={(e) => setStatus(e.target.value)}
             className="form_input"
           >
