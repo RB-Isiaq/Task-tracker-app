@@ -34,7 +34,7 @@ const CreateTask = () => {
         body: JSON.stringify(formData),
       });
       console.log(res);
-      res.status === 201 && router.push("/dashboard");
+      res.status === 201 && router.prefetch("/dashboard");
     } catch (error) {
       setError(error);
       console.log(error);
