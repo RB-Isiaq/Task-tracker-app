@@ -36,7 +36,7 @@ const getTaskDetails = async () => {
     setSubmitting(true);
     const form = new Form(e.target);
     const formData = Object.fromEntries(form.entries());
-    formData.userId = session?.user.id;
+    // formData.userId = session?.user.id;
     console.log(formData);
     // if (!taskId) alert("Task ID not found");
     try {
