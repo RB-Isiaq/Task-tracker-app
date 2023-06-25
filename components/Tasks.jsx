@@ -1,6 +1,8 @@
 "use client";
+import { useState, useEffect } from "react";
 import TaskCard from "./TaskCard";
 import { dummydata } from "@components";
+
 const TasksList = ({ data, sort }) => {
   let sortedData = data;
   if (sort === "title") {
@@ -30,8 +32,8 @@ const TasksList = ({ data, sort }) => {
     <div className="mt-6">
       {sortedData.map((task) => (
         <TaskCard
-          key={task.id}
-          id={task.id}
+          key={task._id}
+          id={task._id}
           title={task.title}
           status={task.status}
           dueDate={task.dueDate}
@@ -42,7 +44,19 @@ const TasksList = ({ data, sort }) => {
 };
 
 const Tasks = ({ sort }) => {
-  return <TasksList data={dummydata} sort={sort} />;
+const [allTasks, setAllTasks] = useState([]);
+
+  const fetchPosts = async () => {
+    const response = await fetch("/api/task");
+    const data = await response.json();
+
+    setAllTasks(data);
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+  return <TasksList data={allTasks} sort={sort} />;
 };
 
 export default Tasks;
