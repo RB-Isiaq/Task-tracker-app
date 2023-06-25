@@ -1,5 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+
 import TaskCard from "./TaskCard";
 
 const TasksList = ({ data, sort }) => {
@@ -44,6 +46,7 @@ const TasksList = ({ data, sort }) => {
 
 const Tasks = ({ sort, userSessionId }) => {
   const [allTasks, setAllTasks] = useState([]);
+  const path = usePathname();
 
   
   const fetchTasks = async () => {
@@ -56,7 +59,9 @@ const Tasks = ({ sort, userSessionId }) => {
 
   useEffect(() => {
     fetchTasks();
-  }, [fetchTasks]);
+
+    
+  }, [fetchTasks, path]);
   return <TasksList data={allTasks} sort={sort} />;
 };
 
