@@ -19,14 +19,14 @@ const UpdateTask = () => {
 
   console.log(taskId)
   
-  const getTaskDetails = async () => {
+  
+  useEffect(() => {
+const getTaskDetails = async () => {
       const response = await fetch(`/api/task/${taskId}`);
       const data = await response.json();
 
       setTask(data);
     };
-  useEffect(() => {
-
     // if (taskId) getTaskDetails();
     getTaskDetails();
   }, []);
