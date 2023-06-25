@@ -25,7 +25,7 @@ export const PATCH = async (request, { params }) => {
   try {
     await connectToDB();
 
-    const updateExistingTask = await Task.findByIdAndUpdate(params.id, body);
+    await Task.findByIdAndUpdate(params.id, body);
     // const existingTask = await Task.findById(params.id);
 
     // if (!existingTask)
@@ -35,8 +35,8 @@ export const PATCH = async (request, { params }) => {
     // existingTask.tag = tag;
     // existingTask = body
 
-    await updateExistingTask.save();
-    return new Response(JSON.stringify(updateExistingTask), { status: 200 });
+   // await updateExistingTask.save();
+    return new Response("Task updated succesfully", { status: 200 });
   } catch (error) {
     return new Response("Failed to update task", {
       status: 500,
