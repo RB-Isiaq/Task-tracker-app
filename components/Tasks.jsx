@@ -61,7 +61,7 @@ const Tasks = ({ sort, userSessionId }) => {
   useEffect(() => {
     fetchTasks();
     
-  }, [fetchTasks, path, allTasks]);
+  }, [fetchTasks, path]);
   return <TasksList data={allTasks} sort={sort} />;
 };
 
