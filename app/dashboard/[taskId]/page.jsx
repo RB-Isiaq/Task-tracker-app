@@ -2,28 +2,37 @@
 import TaskDetails from "@components/TaskDetails";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
+import useSWR from "swr";
 
 const TaskDetail = () => {
   const router = useRouter();
   const [task, setTask] = useState({});
   const { taskId } = useParams();
 
-  const fetchTask = async () => {
-    const response = await fetch(`/api/task/${taskId}`);
-    const data = await response.json();
-    console.log(data);
-    setTask(data);
-  };
+  //NEW WAY TO FETCH DATA
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-  fetchTask();
+  const { data, mutate, error, isLoading } = useSWR(
+    `/api/task/${taskId}`,
+    fetcher
+  );
+  setTasks(data)
+  
+ // const fetchTask = async () => {
+   // const response = await fetch(`/api/task/${taskId}`);
+   // const data = await response.json();
+    // console.log(data);
+   // setTask(data);
+  // };
+
+  //fetchTask();
 
   const handleDelete = async () => {
     const response = await fetch(`/api/task/${taskId}`, {
       method: "DELETE",
-      body: {
-        id: taskId,
-      },
+      
     });
+    mutate()
     // await response.json();
     router.push("/dashboard");
   };
