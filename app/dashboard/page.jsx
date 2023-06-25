@@ -19,10 +19,7 @@ const UserPage = () => {
     router.push("/sign-in");
     
   }
-  if (status === "authenticated") {
   
-    fetchTasks()
-  }
 
   return (
     <section className="w-full flex items-center flex-col mb-4">
@@ -72,7 +69,7 @@ const UserPage = () => {
         </div>
       </div>
 
-      <Tasks sort={sort} userSessionId={session?.user.id} fetchTasks={fetchTasks}/>
+      <Tasks sort={sort} userSessionId={session?.user.id} />
     </section>
   );
 };
