@@ -56,7 +56,7 @@ const Tasks = ({ sort, userSessionId }) => {
 
   
     fetchTasks();
-  }, [dataRes, fetchTasks]);
+  }, [fetchTasks()]);
   return <TasksList data={allTasks} sort={sort} />;
 };
 
