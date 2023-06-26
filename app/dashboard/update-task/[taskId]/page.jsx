@@ -41,6 +41,9 @@ const UpdateTask = () => {
     try {
       const res = await fetch(`/api/task/${taskId}`, {
         method: "PATCH",
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify(formData),
       });
       console.log(res);
