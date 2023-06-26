@@ -45,7 +45,7 @@ const TasksList = ({ data, sort }) => {
 
 const Tasks = ({ sort, userSessionId }) => {
   const [allTasks, setAllTasks] = useState([]);
- 
+
   const fetchTasks = async () => {
     const response = await fetch("/api/task");
     const dataRes = await response.json();
@@ -56,8 +56,7 @@ const Tasks = ({ sort, userSessionId }) => {
 
   // fetchTasks();
   useEffect(() => {
-    fetchTasks();
-    
+    if (userSessionId) fetchTasks();
   }, [fetchTasks]);
   return <TasksList data={allTasks} sort={sort} />;
 };

@@ -7,21 +7,20 @@ import Form from "@components/Form";
 
 const UpdateTask = () => {
   const router = useRouter();
-  const {data: session} = useSession();
-  const {taskId} = useParams();
+  const { data: session } = useSession();
+  const { taskId } = useParams();
   const [submitting, setSubmitting] = useState(false);
   const [task, setTask] = useState({
     title: "",
     desc: "",
     dueDate: "",
-    status: ""
-    });
+    status: "",
+  });
 
-  console.log(taskId)
-  
-  
+  console.log(taskId);
+
   useEffect(() => {
-const getTaskDetails = async () => {
+    const getTaskDetails = async () => {
       const response = await fetch(`/api/task/${taskId}`);
       const data = await response.json();
 

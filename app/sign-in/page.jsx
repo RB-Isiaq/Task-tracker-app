@@ -4,20 +4,20 @@ import { signIn, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
-const SignIn= () => {
+const SignIn = () => {
   const [error, setError] = useState(null);
-    const [success, setSuccess] = useState("");
+  const [success, setSuccess] = useState("");
   const params = useSearchParams();
-  const {data: session, status} = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
-    setError(params.get("error"))
-    setSuccess(params.get("success"))
+    setError(params.get("error"));
+    setSuccess(params.get("success"));
   }, [params]);
   const handSubmit = async (e) => {
     e.preventDefault();
-   
+
     const form = new FormData(e.target);
     const { username, password } = Object.fromEntries(form.entries());
 
@@ -29,8 +29,8 @@ const SignIn= () => {
     });
     // router.push("/dashboard")
     // if (status === "authenticated") {
-      
-    // } 
+
+    // }
   };
   return (
     <>
@@ -39,13 +39,15 @@ const SignIn= () => {
         action="post"
         className="flex flex-col gap-4 items-center mt-10 mb-4 w-full sm:w-[550px]"
       >
-        <h1 className="text-lg blue_gradient">{success ? success : "Welcome Back"}</h1>
+        <h1 className="text-lg blue_gradient">
+          {success ? success : "Welcome Back"}
+        </h1>
         <input
           type="username"
           placeholder="username"
           required
           name="username"
-          autofocus 
+          autofocus
           className="search_input peer"
         />
         <input
@@ -55,12 +57,11 @@ const SignIn= () => {
           name="password"
           className="search_input peer"
         />
-          <div className="flex justify-between gap-10">
-        
+        <div className="flex justify-between gap-10">
           <button
             type="submit"
             className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white w-max shadow-lg"
-            >
+          >
             Sign In
           </button>
           {/* <button
@@ -71,7 +72,6 @@ const SignIn= () => {
             Google
           </button> */}
         </div>
-     
       </form>
       {error && <p className="text-red-400">{error}</p>}
       <p>

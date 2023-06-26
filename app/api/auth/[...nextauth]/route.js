@@ -83,7 +83,7 @@ const handler = NextAuth({
     // },
   },
   pages: {
-    error: "/",
+    error: "/sign-in",
   },
 });
 
