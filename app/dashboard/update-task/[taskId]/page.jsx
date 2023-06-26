@@ -1,13 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
 import { useRouter, useParams } from "next/navigation";
 
 import Form from "@components/Form";
 
 const UpdateTask = () => {
   const router = useRouter();
-  const { data: session } = useSession();
   const { taskId } = useParams();
   const [submitting, setSubmitting] = useState(false);
   const [task, setTask] = useState({
@@ -17,7 +15,7 @@ const UpdateTask = () => {
     status: "",
   });
 
-  console.log(taskId);
+  // console.log(taskId);
 
   useEffect(() => {
     const getTaskDetails = async () => {
@@ -33,7 +31,7 @@ const UpdateTask = () => {
   const updateTask = async (e) => {
     e.preventDefault();
     setSubmitting(true);
-    const form = new Form(e.target);
+    const form = new FormData(e.target);
     const formData = Object.fromEntries(form.entries());
     // formData.userId = session?.user.id;
     console.log(formData);
@@ -42,7 +40,7 @@ const UpdateTask = () => {
       const res = await fetch(`/api/task/${taskId}`, {
         method: "PATCH",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });

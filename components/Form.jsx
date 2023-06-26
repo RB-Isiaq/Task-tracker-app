@@ -3,15 +3,18 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
-  const [dueDate, setDueDate] = useState(task?.dueDate.split("/").reverse().join("-"));
+  const [dueDate, setDueDate] = useState(
+    task?.dueDate.split("/").reverse().join("-")
+  );
+  console.log(dueDate, "CORRECTED");
   const [status, setStatus] = useState(task?.status);
+  console.log(status, "SEND");
 
   useEffect(() => {
     // setTask({...task, dueDate: dueDate})
-   // setTask({...task, status: status})
+    // setTask({...task, status: status})
+  }, [task]);
 
-  }, [task])
-  
   return (
     <section className="w-full max-w-full flex-start flex-col">
       <h1 className="head_text text-left">
