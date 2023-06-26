@@ -26,9 +26,9 @@ const TaskDetail = () => {
     setTask(dataRes);
   };
 
-  useEffect(() => {
-    fetchTask();
-  }, []);
+  fetchTask();
+  // useEffect(() => {
+  // }, []);
 
   const handleDelete = async () => {
     const response = await fetch(`/api/task/${taskId}`, {
