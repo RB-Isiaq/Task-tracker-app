@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
-  const [dueDate, setDueDate] = useState(
-    task?.dueDate.split("/").reverse().join("-")
-  );
-  console.log(dueDate, "CORRECTED");
-  const [status, setStatus] = useState(task?.status);
-  console.log(status, "SEND");
+  // const [dueDate, setDueDate] = useState(
+  //   task?.dueDate.split("/").reverse().join("-")
+  // );
+  // console.log(task?.dueDate, "CORRECTED");
+  // const [status, setStatus] = useState(task?.status);
+  // console.log(status, "SEND");
 
   useEffect(() => {
     // setTask({...task, dueDate: dueDate})
@@ -57,9 +57,9 @@ const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
             Due date
           </span>
           <input
-            value={dueDate}
+            value={task?.dueDate}
             type="date"
-            onChange={(e) => setDueDate(e.target.value)}
+            onChange={(e) => setTask({ ...task, dueDate: e.target.value })}
             required
             name="dueDate"
             className="form_input"
@@ -72,8 +72,8 @@ const Form = ({ type, task, setTask, submitting, handleSubmit }) => {
           <select
             name="status"
             id=""
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
+            value={task?.status}
+            onChange={(e) => setTask({ ...task, status: e.target.value })}
             className="form_input"
           >
             <option value="Not started">Not started</option>

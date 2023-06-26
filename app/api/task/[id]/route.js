@@ -19,15 +19,17 @@ export const GET = async (request, { params }) => {
 
 // PATCH (update)
 export const PATCH = async (request, { params }) => {
-  const body = await request.body;
+  const body = await request.json();
   // const { task, tag } = await request.json();
   console.log(body);
+  console.log(params.id);
   try {
     await connectToDB();
 
     const updatedTask = await Task.findByIdAndUpdate(params.id, body, {
       new: true,
     });
+    console.log(updatedTask);
     // const existingTask = await Task.findById(params.id);
 
     // if (!existingTask)
