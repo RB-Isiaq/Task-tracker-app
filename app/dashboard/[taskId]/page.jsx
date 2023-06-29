@@ -16,19 +16,16 @@ const TaskDetail = () => {
     `/api/task/${taskId}`,
     fetcher
   );
-  // setTask(data);
-  // console.log(data, "SWR");
 
-  const fetchTask = async () => {
-    const response = await fetch(`/api/task/${taskId}`);
-    const dataRes = await response.json();
-    console.log(dataRes);
-    setTask(dataRes);
-  };
-
-  fetchTask();
-  // useEffect(() => {
-  // }, []);
+  useEffect(() => {
+    const fetchTask = async () => {
+      const response = await fetch(`/api/task/${taskId}`);
+      const dataRes = await response.json();
+      console.log(dataRes);
+      setTask(dataRes);
+    };
+    fetchTask();
+  }, []);
 
   const handleDelete = async () => {
     const response = await fetch(`/api/task/${taskId}`, {

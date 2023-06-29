@@ -2,7 +2,6 @@ import Link from "next/link";
 
 const Home = () => {
   return (
-
     <section className="w-full flex-center flex-col">
       <h1 className="head_text text-center">
         Task
@@ -14,13 +13,15 @@ const Home = () => {
         our intuitive interface, you can create, edit, and prioritize tasks
         effortlessly.
       </p>
-      
-       <p className="text-lg my-6">
-        Please <Link href="/dashboard" className="orange_gradient">sign in </Link> to continue
-       </p>
-    
+
+      <p className="text-lg my-10">
+        Please{" "}
+        <Link href="/sign-in" className="orange_gradient">
+          sign in{" "}
+        </Link>{" "}
+        to continue
+      </p>
     </section>
-            
   );
 };
 
