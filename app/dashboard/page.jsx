@@ -5,7 +5,7 @@ import Tasks from "@components/Tasks";
 import { useSession, SessionProvider } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-const UserPage = ({ session }) => {
+const UserPage = () => {
   const [sort, setSort] = useState(null);
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -20,7 +20,7 @@ const UserPage = ({ session }) => {
   }
 
   return (
-    <SessionProvider session={session}>
+    <SessionProvider>
       <section className="w-full flex items-center flex-col mb-4">
         <h1 className="mt-10 text-[22px] sm:text-[28px] text-center">
           Welcome to your dashboard,{" "}

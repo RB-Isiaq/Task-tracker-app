@@ -14,7 +14,7 @@ const Home = () => {
         effortlessly.
       </p>
 
-      <p className="text-lg my-10">
+      <p className="text-2xl my-10">
         Please{" "}
         <Link href="/sign-in" className="orange_gradient">
           sign in{" "}
